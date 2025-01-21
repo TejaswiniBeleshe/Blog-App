@@ -10,6 +10,7 @@ main{
 header{
     display: flex;
     justify-content: space-between;
+    margin-bottom: 50px;
 }
 header a{
     text-decoration: none;
@@ -18,4 +19,9 @@ header a{
 
 header a.logo{
     font-weight:bold;
+}
+header nav{
+    display: flex;
+    gap: 5px;
+
 }
