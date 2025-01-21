@@ -1,0 +1,21 @@
+body{
+    color: #222;
+}
+main{
+    border: 1px solid red;
+    padding: 10px;
+    max-width:85%;
+    margin: 0 auto;
+}
+header{
+    display: flex;
+    justify-content: space-between;
+}
+header a{
+    text-decoration: none;
+    color: inherit /* takes the color of it's parent element*/
+}
+
+header a.logo{
+    font-weight:bold;
+}
