@@ -1,6 +1,10 @@
 body{
     color: #222;
 }
+/* all image should have max-width */
+img{
+    max-width: 100%;
+}
 main{
     border: 1px solid red;
     padding: 10px;
@@ -10,7 +14,8 @@ main{
 header{
     display: flex;
     justify-content: space-between;
-    margin-bottom: 10px;
+    margin-bottom: 50px;
+    align-items: center;
 }
 header a{
     text-decoration: none;
@@ -19,9 +24,24 @@ header a{
 
 header a.logo{
     font-weight:bold;
+    font-size: 1.5rem;
 }
 header nav{
     display: flex;
-    gap: 5px;
+    gap: 15px;
 
 }
+
+div.post{
+    display: grid;
+    grid-template-columns:.9fr 1.1fr;
+    gap: 20px;
+}
+
+div.post div.texts h2{
+    margin: 0;
+    font-size: 1.6rem;
+   
+
+}
+
