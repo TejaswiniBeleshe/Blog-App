@@ -1,3 +1,6 @@
+*{
+    box-sizing: border-box;
+}
 body{
     color: #222;
 }
@@ -33,7 +36,6 @@ header nav{
     gap: 15px;
 
 }
-
 div.post{
     border:1px solid rgb(179, 176, 176);
     border-radius: 12px;
@@ -64,6 +66,37 @@ div.post p.info a.author{
 div.post div.texts p.summary{
   margin: 10px 0; 
   line-height: 1.4rem;
+}
 
+form.login,form.register{
+   max-width: 50%; 
+   margin:0 auto;
+}
+
+input{
+    display: block;
+    margin-bottom: 5px;
+    width: 80%;
+    padding: 5px 8px;
+    border: 2px solid #ddd;
+    border-radius:6px;
+    background-color: #fff; 
+    
+}
+input:focus{
+    outline: none;
+    border: 3px solid #f1a1a1;
+}
+
+button{
+    width: 50%;
+    background-color: #555;
+    color: #fff;
+    padding:6px 5px;
+    border-radius: 4px;
+    border:0;
+}
+form h1{
+    text-align: center;
 }
 
