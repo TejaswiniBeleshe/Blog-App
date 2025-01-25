@@ -1,4 +1,4 @@
-import {useState } from 'react'
+import { SnackbarProvider } from 'notistack'
 
 import './App.css'
 
@@ -8,12 +8,13 @@ import Header from './components/Header'
 
 function App() {
   
-
   return (
+    <SnackbarProvider>
     <main>
       <Header/>
       <Outlet/>
     </main>
+    </SnackbarProvider>
   )
 }
 
