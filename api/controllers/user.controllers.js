@@ -17,4 +17,22 @@ const register = async(req,res)=>{
     }
 }
 
-module.exports = {register}
+const login = async(req,res)=>{
+    try{
+        const {username,password} = req.body;
+        let isUserExist = await allUserlogics.findUser(username);
+        if(!isUserExist){
+            return res.status(404).send({message:"User not found,Please register"})
+        }
+        let isPasswordMatch = allUserlogics.comparePassword(password,isUserExist.password)
+        if(!isPasswordMatch){
+            return res.status(401).send({message:"Invalid password"})
+        }
+        res.status(200).send({data:isUserExist})
+    }
+    catch(err){
+
+    }
+}
+
+module.exports = {register,login}

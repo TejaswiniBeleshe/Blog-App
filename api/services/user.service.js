@@ -1,9 +1,11 @@
 const User = require('../models/user.model.js');
 const bcrypt = require('bcrypt')
+
+let salt = bcrypt.genSaltSync(10)
 class userlogics{
     
-    createNewUser=async(payload)=>{
-        return User.create({...payload,password:await this.convertPassword(payload.password) })
+    createNewUser(payload){
+        return User.create({...payload,password:this.convertPassword(payload.password) })
     }
 
     findUser(username){
@@ -11,7 +13,10 @@ class userlogics{
     }
 
     convertPassword(payload){
-        return bcrypt.hash(payload,10)
+        return bcrypt.hashSync(payload,salt)
+    }
+    comparePassword(plain,hashed){
+        return bcrypt.compareSync(plain,hashed)
     }
 }
 
