@@ -26,13 +26,26 @@ const login = async(req,res)=>{
         }
         let isPasswordMatch = allUserlogics.comparePassword(password,isUserExist.password)
         if(!isPasswordMatch){
-            return res.status(401).send({message:"Invalid password"})
+            return res.status(401).send({message:"wrong credential"})
         }
-        res.status(200).send({data:isUserExist})
+        let token = await allUserlogics.createToken(isUserExist.id,process.env.SECREATE_KEY);
+        res.cookie('token',token,{
+            httpOnly:true,
+            maxAge:60*1*1000,
+            
+        })
+        res.status(200).send({message:"Login successfully"})
     }
     catch(err){
+        console.log(err)
+        res.status(500).send({message:err})
 
     }
 }
 
-module.exports = {register,login}
+const userIsValid = async(req,res)=>{
+   
+    res.send(req.cookies)
+}
+
+module.exports = {register,login,userIsValid}

@@ -1,5 +1,6 @@
 const User = require('../models/user.model.js');
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken')
 
 let salt = bcrypt.genSaltSync(10)
 class userlogics{
@@ -18,6 +19,15 @@ class userlogics{
     comparePassword(plain,hashed){
         return bcrypt.compareSync(plain,hashed)
     }
+
+    createToken(payload,key){
+        return jwt.sign({...payload},key)
+    }
+    verifyUserByToken(token,key){
+        return jwt.verify(token,key)
+
+    }
+
 }
 
 module.exports = userlogics

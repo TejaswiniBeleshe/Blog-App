@@ -15,10 +15,12 @@ const LoginPage = function(){
             headers:{
                 'Content-Type':"application/json"
             },
-            body:JSON.stringify({username,password})
+            body:JSON.stringify({username,password}),
+            credentials:'include',
+            
         })
         let data = await response.json()
- 
+        console.log(data)
         if(response.status === 404){
             enqueueSnackbar(data.message,{
                 variant:"error",
@@ -32,14 +34,13 @@ const LoginPage = function(){
                 anchorOrigin:{horizontal:"center",vertical:"top"}
             })
         }else{
-
-            enqueueSnackbar("Welcome to user page",{
+            
+            enqueueSnackbar(data.message,{
                 variant:"success",
                 autoHideDuration:1200,
                 anchorOrigin:{horizontal:"center",vertical:"top"}
             })
-            navigate('/userpage')
-            
+            navigate('/userpage')    
         }
 
 

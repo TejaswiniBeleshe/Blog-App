@@ -1,9 +1,10 @@
 const router = require("express").Router();
 // const User = require('../models/user.model.js')
-const {register,login} = require('../controllers/user.controllers.js')
+const {register,login,userIsValid} = require('../controllers/user.controllers.js')
 
 router.post('/register',register)
 router.post('/login',login)
+router.get('/profile',userIsValid)
 
 
 
