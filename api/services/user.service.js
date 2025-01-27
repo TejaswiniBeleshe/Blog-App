@@ -13,6 +13,10 @@ class userlogics{
         return User.findOne({username})
     }
 
+    findUserById(id){
+        return User.findOne({id:id})
+    }
+
     convertPassword(payload){
         return bcrypt.hashSync(payload,salt)
     }
@@ -25,7 +29,6 @@ class userlogics{
     }
     verifyUserByToken(token,key){
         return jwt.verify(token,key)
-
     }
 
 }

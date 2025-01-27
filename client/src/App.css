@@ -100,3 +100,10 @@ form h1{
     text-align: center;
 }
 
+.header{
+    border: 1px solid red;
+    padding: 1rem;
+    border-radius: 8px;
+    background-color: #f2efef;
+}
+

@@ -34,7 +34,7 @@ const RegisterPage = function(){
                     variant:'success',
                     anchorOrigin:{horizontal:"center",vertical:'top'}  
                 })
-                navigate('/userpage')
+                navigate('/')
             }  
     }
     return(
