@@ -37,7 +37,7 @@ const login = async(req,res)=>{
             maxAge:60*60*1000,  
             path:'/'
         })
-        res.status(200).send({message:"Login successfully"})
+        res.status(200).send({user:isUserExist})
     }
     catch(err){
         console.log(err)
@@ -47,10 +47,9 @@ const login = async(req,res)=>{
 }
 
 const userIsValid = async(req,res)=>{
-    //  console.log(req.cookies)
-    // console.log(req.cookies)
+   
     const {token} = req.cookies
-    console.log(token)
+    
     try{
         if(!token){
             return res.status(401).send('no token present')
@@ -70,4 +69,9 @@ const userIsValid = async(req,res)=>{
 
 }
 
-module.exports = {register,login,userIsValid}
+const logoutUser = async(req,res)=>{
+    res.cookie('token','');
+    res.status(200).send()
+}
+
+module.exports = {register,login,userIsValid,logoutUser}

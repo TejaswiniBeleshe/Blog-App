@@ -7,7 +7,7 @@ import Cookies from "js-cookie"
 const LoginPage = function(){
     const [username,setUsername] = useState('');
     const [password,setPassword] = useState('')
-    const {reload,setReload} = useContext(context)
+    const {userInfo,setUserInfo} = useContext(context)
     const navigate = useNavigate()
     const login = async function(e){
         e.preventDefault();
@@ -38,13 +38,12 @@ const LoginPage = function(){
             })
         }else{
             
-            enqueueSnackbar(data.message,{
+            enqueueSnackbar('Logged in',{
                 variant:"success",
                 autoHideDuration:1200,
                 anchorOrigin:{horizontal:"center",vertical:"top"}
             })
-           
-            setReload(Date.now())
+            setUserInfo(data.user)
             navigate('/')    
         }
 

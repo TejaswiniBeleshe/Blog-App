@@ -8,12 +8,12 @@ import { createContext, useState } from 'react'
 
 export const context = createContext()
 function App() {
-  const [reload,setReload] = useState();
+  const [userInfo,setUserInfo] = useState();
   
   
   return (
     <SnackbarProvider>
-    <context.Provider value={{reload,setReload}}>
+    <context.Provider value={{userInfo,setUserInfo}}>
     <main>
       <Header/>
       <Outlet/>

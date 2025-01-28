@@ -3,26 +3,39 @@ import { Link } from "react-router-dom";
 import config from "../hostname";
 import { context } from "../App";
 const Header = function(){
-  const {reload,setReload} = useContext(context);
-  const [loggedUser,setLoggedUser] = useState('')
+  const {userInfo,setUserInfo} = useContext(context);
   const {api} = config
   useEffect(()=>{
     apiCall()
-  },[reload])
+    console.log('done')
+  },[])
 
   const apiCall = async()=>{
     try{
       let res = await fetch(`${api}/user/profile`,{
         method:"GET",
         credentials:'include',
-       
       })
      let data = await res.json()
-     console.log(data)
-     setLoggedUser(data)
+     console.log('execured')
+     setUserInfo(data)
     }
     catch(err){
         console.log(err)
+    }
+    
+  }
+
+  const handleLogout = ()=>{
+    try{
+      let response = fetch(`${api}/user/logout`,{
+        credentials:'include',
+        method:'POST'
+      })
+       setUserInfo('')
+    } 
+    catch(err){
+      console.log(err)
     }
   }
    
@@ -30,13 +43,14 @@ const Header = function(){
        <header className="header">
         <Link to="/" className="logo">MyBlog</Link>
         {
-          !loggedUser.username?
+          !userInfo?
         <nav>
           <Link to="/login">Login</Link>
           <Link to="/register">Register</Link>
         </nav>:<nav>
-          <span >{loggedUser.username}</span>
-          <Link to="/">Create new Blog</Link>
+          <span >{userInfo.username}</span>
+          <Link to="/create">Create new Blog</Link>
+          <button onClick={handleLogout}>Logout</button>
         </nav>
 
       }
